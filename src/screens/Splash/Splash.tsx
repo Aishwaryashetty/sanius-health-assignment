@@ -47,7 +47,7 @@ export default function Splash() {
 
     return (
         <LinearGradient
-            colors={[color.maroon, color.darkBrown]}
+            colors={[color.maroon, color.darkPurple]}
             style={styles.container}
         >
             <Animated.View style={{ opacity: fadeAnim }}>

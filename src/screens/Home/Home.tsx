@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
-import { View, FlatList, Text, Alert, SafeAreaView, TextInput, Image, RefreshControl, Animated } from 'react-native';
+import { View, FlatList, Text, SafeAreaView, TextInput, Image, RefreshControl, Animated } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import Toast from 'react-native-toast-message';
 
 import { nowPlaying, popular, topRated, upcoming, searchMovies, getFavorite } from '../../services/TMDBServices';
 import styles from './Styles';
@@ -94,7 +95,11 @@ export default function Home({ category }: HomeProps) {
                 }
             });
         } catch (error) {
-            Alert.alert('Error', 'Failed to load movies. Please try again later.');
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Failed to load movies. Please try again.',
+            });
         } finally {
             setLoading(false);
         }
@@ -121,7 +126,11 @@ export default function Home({ category }: HomeProps) {
             setPage(1);
             await fetchMovies(1, true);
         } catch (error) {
-            Alert.alert('Error', 'Failed to refresh movies. Please try again.');
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Failed to refresh movies. Please try again.',
+            });
         } finally {
             setRefreshing(false);
         }

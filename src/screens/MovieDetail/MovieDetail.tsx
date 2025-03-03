@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ImageBackground, Image, Alert } from 'react-native';
+import { View, Text, ImageBackground, Image } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import Toast from 'react-native-toast-message';
 
 import { getMovieDetails, getFavorite, addToFavorite } from '../../services/TMDBServices';
 
@@ -37,7 +38,11 @@ export default function MovieDetails({ route }: MovieDetailsProps) {
                 );
                 setIsFavorite(isAlreadyFavorite);
             } catch (error) {
-                Alert.alert('Error', 'Failed to fetching movie details. Please try again.');
+                Toast.show({
+                    type: 'error',
+                    text1: 'Error',
+                    text2: 'Failed to fetching movie details. Please try again.',
+                });
             } finally {
                 setLoading(false);
             }
@@ -51,8 +56,18 @@ export default function MovieDetails({ route }: MovieDetailsProps) {
         try {
             await addToFavorite(movieId, !isFavorite);
             setIsFavorite(!isFavorite);
+            // Show toast based on new favorite status
+            Toast.show({
+                type: 'success',
+                text1: isFavorite ? 'Removed from Favorites' : 'Added to Favorites',
+                text2: `${movie?.title} has been ${isFavorite ? 'removed from Favorites' : 'added to Favorites'}.`,
+            });
         } catch (error) {
-            Alert.alert('Error', 'Failed to add this Movie Favorites. Please try again.');
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Could not update favorites.',
+            });
         }
     };
 

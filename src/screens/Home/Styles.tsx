@@ -4,7 +4,7 @@ import { color } from '../../utility/constants';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: color.darkBrown,
+        backgroundColor: color.darkPurple,
     },
     searchContainer: {
         flexDirection: 'row',
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
         color: color.beige
     },
     loadingGif: {
-        width: 200,
-        height: 200,
+        width: 100,
+        height: 100,
         alignSelf: 'center',
     },
     loadingCenter: {

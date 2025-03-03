@@ -11,7 +11,7 @@ export const color = {
     offwhite: '#f8f9fa',
     darkGrey: '#666666',
     beige: '#e9d9b5',
-    darkBrown: '#22092C',
+    darkPurple: '#22092C',
     maroon: '#872341',
     red: '#BE3144',
     orange: '#F05941',
