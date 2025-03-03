@@ -26,7 +26,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, imageLoaded, fadeAnim, onI
     // Determine image source based on availability of poster_path
     const imageSource = movie.poster_path
         ? { uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }
-        : require('../../assets/no_poster1.png');
+        : require('../../assets/no_poster.png');
 
     // Render star rating based on vote_average (converted from 0-10 to 0-5 stars)
     const renderStars = (rating: number) => {
